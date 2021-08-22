@@ -1,10 +1,20 @@
 const Metric = require('mongoose').model('Metric');
 
 exports.getMetrics = async (req, res) => {
-    return res.send({
-        status: "success",
-        message: "returns all metrics",
-    });
+    await Metric.find({}, "-updatedAt -__v")
+    .then((metrics) => {
+        res.send({
+            status: "success",
+            message: "all metrics",
+            data: metrics
+        });
+    }).catch((e) => {
+        res.send({
+            status: "error",
+            message: e,
+            data: null
+        });  
+    })
 }
 
 exports.addMetric = async (req, res) => {
