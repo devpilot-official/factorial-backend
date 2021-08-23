@@ -5,7 +5,7 @@ let dotenv = require("dotenv");
 
 dotenv.config();
 
-let port = process.env.port;
+let port = process.env.PORT;
 app.set('port', port);
 
 let server = http.createServer(app);
@@ -51,6 +51,6 @@ function onListening() {
     let bind = typeof addr === 'string'
         ? 'pipe ' + addr
         : 'port ' + addr.port;
-    console.log(`🚀  ${process.env.service_name} listening on ` + process.env.port);
+    console.log(`🚀  ${process.env.SERVICE_NAME} listening on ` + process.env.PORT);
     debug('Listening on ' + bind);
 }

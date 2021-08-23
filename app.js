@@ -7,7 +7,7 @@ const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 
-const env = process.env.node_env;
+const env = process.env.NODE_ENV;
 const config = require('./config/config')[env];
 require('./data/connect.js')(config);
 
@@ -22,7 +22,7 @@ app.use('/', require('./routes/index.js'));
 app.get('/', (req, res) => {
     return res.send({
         status: "success",
-        message: `Welcome to ${process.env.service_name}`
+        message: `Welcome to ${process.env.SERVICE_NAME}`
     })
 })
 
